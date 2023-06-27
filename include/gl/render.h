@@ -5,10 +5,11 @@
 
 struct Window
 {
-  GLFWwindow *window;
-  i32 width;
-  i32 height;
-  char name[10];
+  GLFWwindow  *window;
+  GLFWimage   icon[2];
+  i32         width;
+  i32         height;
+  char        name[10];
 };
 
 int checkGLFW(void);
