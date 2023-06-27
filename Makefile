@@ -32,10 +32,10 @@ LIBRARIES     :=  -lGL -lglfw3 -lm
 _TARGETS      :=  glproject
 _SOURCES      :=  main.c \
                   tools/debug.c tools/getopt.c tools/string.c \
-                  gl/render.c gl/input.c
+                  gl/render.c gl/input.c gl/draw.c
 _OBJECTS      :=  main.o \
                   tools/debug.o tools/getopt.o tools/string.o \
-                  gl/render.o gl/input.o
+                  gl/render.o gl/input.o gl/draw.o
 
 TARGETS       :=  $(addprefix $(BIN_DIR)/, $(_TARGETS))
 SOURCES       :=  $(addprefix $(SRC_DIR)/, $(_SOURCES))

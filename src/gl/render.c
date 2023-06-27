@@ -20,6 +20,7 @@ int checkGLFW(void)
 
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, GL_VERSION_MAJOR);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, GL_VERSION_MINOR);
+  glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_ANY_PROFILE);
 
   debug("GLFW initialized.", 1);
   return 0;
@@ -34,6 +35,16 @@ int handleRender(struct Render render)
     return 1;
   }
 
+  float object[] =
+  {
+    -0.5f, -0.5f, 0.0f,
+    0.5f, -0.5f, 0.0f,
+    0.0f, 0.5f, 0.0f
+  };
+  u32 VBO = 0, shaderProgram = 0, VAO = 0, EBO = 0;
+
+  drawVertex(object, VBO, shaderProgram, VAO, EBO);
+
   glfwMakeContextCurrent(render.window);
   glfwSetKeyCallback(render.window, keyCallback);
   glfwSwapInterval(1);
@@ -41,6 +52,13 @@ int handleRender(struct Render render)
   while (!glfwWindowShouldClose(render.window))
   {
     i32 width, height;
+
+    glEnableVertexAttribArray(VAO);
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
+
+    glDrawArrays(GL_TRIANGLES, 0, 3);
+    glDisableVertexAttribArray(VAO);
 
     glfwGetFramebufferSize(render.window, &width, &height);
     glViewport(0, 0, width, height);
