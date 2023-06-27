@@ -5,49 +5,49 @@
 
 int checkGLFW(void)
 {
-	bool bInitialized = glfwInit();
+  bool bInitialized = glfwInit();
 
-	switch (bInitialized)
-	{
-		case GLFW_FALSE:
-			{
-				debug("GLFW could not be initialized.", 3);
-				return 1;
-			}
-		default:
-			break;
-	}
+  switch (bInitialized)
+  {
+    case GLFW_FALSE:
+      {
+        debug("GLFW could not be initialized.", 3);
+        return 1;
+      }
+    default:
+      break;
+  }
 
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, GL_VERSION_MAJOR);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, GL_VERSION_MINOR);
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, GL_VERSION_MAJOR);
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, GL_VERSION_MINOR);
 
-	debug("GLFW initialized.", 1);
-	return 0;
+  debug("GLFW initialized.", 1);
+  return 0;
 }
 
 int handleWindow(GLFWwindow *window)
 {
-	if (!window)
-	{
-		glfwTerminate();
-		debug("Could not create window!", 3);
-		return 1;
-	}
+  if (!window)
+  {
+    glfwTerminate();
+    debug("Could not create window!", 3);
+    return 1;
+  }
 
-	glfwMakeContextCurrent(window);
-	glfwSetKeyCallback(window, keyCallback);
-	glfwSwapInterval(1);
+  glfwMakeContextCurrent(window);
+  glfwSetKeyCallback(window, keyCallback);
+  glfwSwapInterval(1);
 
-	while (!glfwWindowShouldClose(window))
-	{
-		i32 width, height;
+  while (!glfwWindowShouldClose(window))
+  {
+    i32 width, height;
 
-		glfwGetFramebufferSize(window, &width, &height);
-		glViewport(0, 0, width, height);
+    glfwGetFramebufferSize(window, &width, &height);
+    glViewport(0, 0, width, height);
 
-		glfwSwapBuffers(window);
-		glfwPollEvents();
-	}
+    glfwSwapBuffers(window);
+    glfwPollEvents();
+  }
 
-	return 0;
+  return 0;
 }
