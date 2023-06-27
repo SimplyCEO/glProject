@@ -3,7 +3,7 @@
 
 #include "gl/main.h"
 
-struct Window
+struct Render
 {
   GLFWwindow  *window;
   GLFWimage   icon[2];
@@ -13,7 +13,7 @@ struct Window
 };
 
 int checkGLFW(void);
-int handleWindow(GLFWwindow *window);
+int handleRender(struct Render render);
 
 #endif
 

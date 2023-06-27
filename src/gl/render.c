@@ -25,27 +25,27 @@ int checkGLFW(void)
   return 0;
 }
 
-int handleWindow(GLFWwindow *window)
+int handleRender(struct Render render)
 {
-  if (!window)
+  if (!render.window)
   {
     glfwTerminate();
     debug("Could not create window!", 3);
     return 1;
   }
 
-  glfwMakeContextCurrent(window);
-  glfwSetKeyCallback(window, keyCallback);
+  glfwMakeContextCurrent(render.window);
+  glfwSetKeyCallback(render.window, keyCallback);
   glfwSwapInterval(1);
 
-  while (!glfwWindowShouldClose(window))
+  while (!glfwWindowShouldClose(render.window))
   {
     i32 width, height;
 
-    glfwGetFramebufferSize(window, &width, &height);
+    glfwGetFramebufferSize(render.window, &width, &height);
     glViewport(0, 0, width, height);
 
-    glfwSwapBuffers(window);
+    glfwSwapBuffers(render.window);
     glfwPollEvents();
   }
 

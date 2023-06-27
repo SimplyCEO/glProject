@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
   u8 i;
   bool bFullscreen = false;
 
-  struct Window main;
+  struct Render main;
   main.width = WINDOW_WIDTH;
   main.height = WINDOW_HEIGHT;
   strcpy(main.name, "glProject");
@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
     default: break;
   }
 
-  handleWindow(main.window);
+  handleRender(main);
 
   glfwDestroyWindow(main.window);
   glfwTerminate();
