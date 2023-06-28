@@ -27,15 +27,15 @@ SRC_DIR       :=  $(PWD)/src
 BIN_DIR       :=  $(PWD)/bin
 DIRS          :=  obj obj/tools obj/gl bin
 HEADERS       :=  -I./include/
-LIBRARIES     :=  -lGL -lglfw3 -lm
+LIBRARIES     :=  -lGL -lGLU -lglut -lm
 
 _TARGETS      :=  glproject
 _SOURCES      :=  main.c \
                   tools/debug.c tools/getopt.c tools/string.c \
-                  gl/render.c gl/input.c gl/draw.c
+                  gl/input.c gl/render.c
 _OBJECTS      :=  main.o \
                   tools/debug.o tools/getopt.o tools/string.o \
-                  gl/render.o gl/input.o gl/draw.o
+                  gl/input.o gl/render.o
 
 TARGETS       :=  $(addprefix $(BIN_DIR)/, $(_TARGETS))
 SOURCES       :=  $(addprefix $(SRC_DIR)/, $(_SOURCES))

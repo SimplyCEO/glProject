@@ -1,9 +1,9 @@
-#ifndef INPUT_HEADER_FILE
-#define INPUT_HEADER_FILE
+#ifndef GL_INPUT_HEADER_FILE
+#define GL_INPUT_HEADER_FILE
 
-#include "gl/main.h"
-
-void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
+void keyPressed(u8 key, i32 x, i32 y);
+void keyReleased(u8 key, i32 x, i32 y);
+void handleKeys(void);
 
 #endif
 

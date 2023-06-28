@@ -8,13 +8,13 @@
 #define GL_VERSION_MAJOR 1
 #define GL_VERSION_MINOR 1
 
-#define WINDOW_WIDTH 640
-#define WINDOW_HEIGHT 480
+#define DEFAULT_WINDOW_WIDTH 640
+#define DEFAULT_WINDOW_HEIGHT 480
 
-#define GLFW_INCLUDE_NONE
-
+#include <GL/glew.h>
+#include <GL/freeglut.h>
+#include <GL/glu.h>
 #include <GL/gl.h>
-#include <GLFW/glfw3.h>
 
 #endif
 

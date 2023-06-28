@@ -1,6 +1,11 @@
 #include "types.h"
+
 #include "tools/debug.h"
 #include "tools/getopt.h"
+
+#include "gl/main.h"
+#include "gl/structures.h"
+#include "gl/input.h"
 #include "gl/render.h"
 
 #include <stdio.h>
@@ -9,14 +14,14 @@
 
 int main(int argc, char *argv[])
 {
-  checkGLFW();
+  glutInit(&argc, argv);
 
   u8 i;
   bool bFullscreen = false;
 
   struct Render main;
-  main.width = WINDOW_WIDTH;
-  main.height = WINDOW_HEIGHT;
+  main.width = DEFAULT_WINDOW_WIDTH;
+  main.height = DEFAULT_WINDOW_HEIGHT;
   strcpy(main.name, "glProject");
 
   for(i=0; i<argc-1; i++)
@@ -26,17 +31,16 @@ int main(int argc, char *argv[])
     got = getopt(argv[i+1], "-F", "--fullscreen");
     bFullscreen = got;
   }
-  switch(bFullscreen)
-  {
-    case 0: main.window = glfwCreateWindow(main.width, main.height, main.name, NULL, NULL); break;
-    case 1: main.window = glfwCreateWindow(main.width, main.height, main.name, glfwGetPrimaryMonitor(), NULL); break;
-    default: break;
-  }
 
-  handleRender(main);
+  initializeGL(main);
 
-  glfwDestroyWindow(main.window);
-  glfwTerminate();
+  glutDisplayFunc(display);
+  glutReshapeFunc(reshape);
+  glutKeyboardFunc(keyPressed);
+  glutKeyboardUpFunc(keyReleased);
+
+  glutMainLoop();
+
   debug("glProject closed.", 0);
   return 0;
 }

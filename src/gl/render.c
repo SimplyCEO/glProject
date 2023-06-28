@@ -1,71 +1,37 @@
 #include "types.h"
 #include "tools/debug.h"
-#include "gl/render.h"
+#include "gl/main.h"
+#include "gl/structures.h"
 #include "gl/input.h"
 
-int checkGLFW(void)
+void display(void)
 {
-  bool bInitialized = glfwInit();
+  handleKeys();
 
-  switch (bInitialized)
-  {
-    case GLFW_FALSE:
-      {
-        debug("GLFW could not be initialized.", 3);
-        return 1;
-      }
-    default:
-      break;
-  }
+  glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+  glClear(GL_COLOR_BUFFER_BIT);
+  glLoadIdentity();
 
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, GL_VERSION_MAJOR);
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, GL_VERSION_MINOR);
-  glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_ANY_PROFILE);
-
-  debug("GLFW initialized.", 1);
-  return 0;
+  glFlush();
 }
 
-int handleRender(struct Render render)
+void reshape(i32 width, i32 height)
 {
-  if (!render.window)
-  {
-    glfwTerminate();
-    debug("Could not create window!", 3);
-    return 1;
-  }
+  u8 FOV = 60;
+  double minRender = 1.0, maxRender = 100.0;
+  glViewport(0, 0, (GLsizei)width, (GLsizei)height);
 
-  float object[] =
-  {
-    -0.5f, -0.5f, 0.0f,
-    0.5f, -0.5f, 0.0f,
-    0.0f, 0.5f, 0.0f
-  };
-  u32 VBO = 0, shaderProgram = 0, VAO = 0, EBO = 0;
+  glMatrixMode(GL_PROJECTION);
+  glLoadIdentity();
+  gluPerspective(FOV, (GLfloat)width / (GLfloat)height, minRender, maxRender);
+  glMatrixMode(GL_PROJECTION);
+}
 
-  drawVertex(object, VBO, shaderProgram, VAO, EBO);
-
-  glfwMakeContextCurrent(render.window);
-  glfwSetKeyCallback(render.window, keyCallback);
-  glfwSwapInterval(1);
-
-  while (!glfwWindowShouldClose(render.window))
-  {
-    i32 width, height;
-
-    glEnableVertexAttribArray(VAO);
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
-
-    glDrawArrays(GL_TRIANGLES, 0, 3);
-    glDisableVertexAttribArray(VAO);
-
-    glfwGetFramebufferSize(render.window, &width, &height);
-    glViewport(0, 0, width, height);
-
-    glfwSwapBuffers(render.window);
-    glfwPollEvents();
-  }
+int initializeGL(struct Render render)
+{
+  glutInitDisplayMode(GLUT_SINGLE);
+  glutInitWindowSize(render.width, render.height);
+  glutCreateWindow(render.name);
 
   return 0;
 }
