@@ -24,6 +24,9 @@ int main(int argc, char *argv[])
   main.height = DEFAULT_WINDOW_HEIGHT;
   strcpy(main.name, "glProject");
 
+  configureKeys();
+  configureCamera();
+
   for(i=0; i<argc-1; i++)
   {
     u8 got;
@@ -35,7 +38,9 @@ int main(int argc, char *argv[])
   initializeGL(main);
 
   glutDisplayFunc(display);
+  glutIdleFunc(display);
   glutReshapeFunc(reshape);
+
   glutKeyboardFunc(keyPressed);
   glutKeyboardUpFunc(keyReleased);
 

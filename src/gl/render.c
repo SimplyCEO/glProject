@@ -7,17 +7,29 @@
 #include "gl/draw.h"
 #include "gl/input.h"
 
+#include <stdio.h>
+
+struct Camera camera;
+float drawColour[3] = {0.2f, 0.2f, 0.8f};
+
+void configureCamera(void)
+{
+  camera.y = 0.0f;
+  camera.x = 0.0f;
+  camera.z = -5.0f;
+}
+
 void display(void)
 {
-  handleKeys();
+  handleKeys(&camera, drawColour);
 
   glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
   glClear(GL_COLOR_BUFFER_BIT);
   glLoadIdentity();
 
-  glTranslatef(0.0f, 0.0f, -5.0f);
+  glTranslatef(camera.x, camera.y, camera.z);
 
-  primitiveDraw();
+  primitiveDraw(drawColour);
 
   glFlush();
 }

@@ -1,9 +1,9 @@
 #include "types.h"
 #include "gl/main.h"
 
-void primitiveDraw(void)
+void primitiveDraw(float colour[])
 {
-  glColor3f(0.0f, 0.0f, 1.0f);
+  glColor3f(colour[0], colour[1], colour[2]);
 
   glBegin(GL_QUADS);
   glVertex3f(-0.5f, -0.5f, 0.0f);
