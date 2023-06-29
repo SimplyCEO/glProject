@@ -31,7 +31,7 @@ void display(void)
 
   primitiveDraw(drawColour);
 
-  glFlush();
+  glutSwapBuffers();
 }
 
 void reshape(i32 width, i32 height)
@@ -48,7 +48,7 @@ void reshape(i32 width, i32 height)
 
 int initializeGL(struct Render render)
 {
-  glutInitDisplayMode(GLUT_SINGLE);
+  glutInitDisplayMode(GLUT_DOUBLE);
   glutInitWindowSize(render.width, render.height);
   glutCreateWindow(render.name);
 
