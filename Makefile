@@ -27,7 +27,13 @@ SRC_DIR       :=  $(PWD)/src
 BIN_DIR       :=  $(PWD)/bin
 DIRS          :=  obj obj/tools obj/gl bin
 HEADERS       :=  -I./include/
-LIBRARIES     :=  -lGL -lGLU -lglut -lm
+LIBRARIES     :=  -lm
+
+ifndef MINGW_CHOST
+	LIBRARIES   +=  -lGL -lGLU -lglut
+else
+	LIBRARIES   += -lopengl32 -lglu32 -lfreeglut
+endif
 
 _TARGETS      :=  glproject
 _SOURCES      :=  main.c \
