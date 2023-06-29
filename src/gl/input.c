@@ -39,25 +39,25 @@ void handleKeys(struct Camera *camera, float colour[])
 
   switch(upKey)
   {
-    case 1: camera->y += 0.0005f; break;
+    case 1: camera->y += 0.01f; break;
     default: break;
   }
 
   switch(downKey)
   {
-    case 1: camera->y -= 0.0005f; break;
+    case 1: camera->y -= 0.01f; break;
     default: break;
   }
 
   switch(leftKey)
   {
-    case 1: camera->x -= 0.0005f; break;
+    case 1: camera->x -= 0.01f; break;
     default: break;
   }
 
   switch(rightKey)
   {
-    case 1: camera->x += 0.0005f; break;
+    case 1: camera->x += 0.01f; break;
     default: break;
   }
 
