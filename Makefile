@@ -46,17 +46,17 @@ OBJECTS       :=  $(addprefix $(OBJ_DIR)/, $(_OBJECTS))
 all: directories $(TARGETS)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@printf "[CC] ""$(GREEN)""Building object \'$<\'""$(RESET_COLOUR)""\n"
+	@printf "[CC] ""$(GREEN)""Building object '$<'""$(RESET_COLOUR)""\n"
 	@$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@
 
 $(TARGETS): $(OBJECTS)
-	@printf "[BIN] ""$(BOLD_GREEN)""Linking binary \'$@\'""$(RESET_COLOUR)""\n"
+	@printf "[BIN] ""$(BOLD_GREEN)""Linking binary '$@'""$(RESET_COLOUR)""\n"
 	@$(CC) $^ $(LIBRARIES) $(HEADERS) -o $@
 
 directories: $(DIRS)
 
 $(DIRS):
-	@printf "[DIR] ""$(BLUE)""Directory ""$(BOLD_BLUE)""\'$@\'""$(RESET_COLOUR)$(BLUE)"" created""$(RESET_COLOUR).""\n"
+	@printf "[DIR] ""$(BLUE)""Directory ""$(BOLD_BLUE)""'$@'""$(RESET_COLOUR)$(BLUE)"" created""$(RESET_COLOUR).""\n"
 	@mkdir -p $(PWD)/$@
 
 clean:
