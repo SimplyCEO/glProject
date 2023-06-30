@@ -13,9 +13,10 @@ struct Camera
   float x;
   float y;
   float z;
-  float rotX;
-  float rotY;
-  float rotZ;
+  float faceX;
+  float faceY;
+  float faceZ;
+  float angle;
 };
 
 struct KeyMap
