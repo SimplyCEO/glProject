@@ -52,7 +52,7 @@ void display(void)
   }
   glRotatef(camera.angle, camera.faceX, camera.faceY, camera.faceZ);
 
-  primitiveDraw(drawColour);
+  createBlock(drawColour);
 
   glutSwapBuffers();
 }
