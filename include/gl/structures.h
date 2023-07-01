@@ -27,6 +27,7 @@ struct KeyMap
   u8 left;
   u8 right;
   u8 transform;
+  u8 sprint[4];
 };
 
 #endif

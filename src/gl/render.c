@@ -8,7 +8,6 @@
 #include "gl/input.h"
 
 struct Camera camera;
-float drawColour[3] = {0.2f, 0.2f, 0.8f};
 u16 i;
 
 void configureCamera(void)
@@ -24,7 +23,7 @@ void configureCamera(void)
 
 void display(void)
 {
-  handleKeys(&camera, drawColour);
+  handleKeys(&camera);
 
   glEnable(GL_BLEND);
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
