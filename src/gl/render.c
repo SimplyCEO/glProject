@@ -52,7 +52,8 @@ void display(void)
   }
   glRotatef(camera.angle, camera.faceX, camera.faceY, camera.faceZ);
 
-  createBlock(drawColour);
+  createObject(1, 1);
+  createObject(1, 2);
 
   glutSwapBuffers();
 }

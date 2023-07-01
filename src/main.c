@@ -1,4 +1,5 @@
 #include "types.h"
+#include "register.h"
 
 #include "tools/debug.h"
 #include "tools/getopt.h"
@@ -24,6 +25,7 @@ int main(int argc, char *argv[])
   main.height = DEFAULT_WINDOW_HEIGHT;
   strcpy(main.name, "glProject");
 
+  registerObjects();
   configureKeys();
   configureCamera();
 

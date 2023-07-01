@@ -3,9 +3,9 @@
 
 struct Render
 {
-  i32         width;
-  i32         height;
-  char        name[10];
+  i32  width;
+  i32  height;
+  char name[10];
 };
 
 struct Camera

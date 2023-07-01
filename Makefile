@@ -36,10 +36,10 @@ else
 endif
 
 _TARGETS      :=  glproject
-_SOURCES      :=  main.c \
+_SOURCES      :=  main.c register.c \
                   tools/debug.c tools/getopt.c tools/string.c \
                   gl/draw.c gl/input.c gl/render.c
-_OBJECTS      :=  main.o \
+_OBJECTS      :=  main.o register.o \
                   tools/debug.o tools/getopt.o tools/string.o \
                   gl/draw.o gl/input.o gl/render.o
 
