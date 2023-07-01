@@ -16,6 +16,8 @@ struct Object
 };
 
 void registerObjects(void);
+int returnObject(u8 id);
+u8 addObjectData(struct Object object[]);
 struct Object getObjectData(u8 type, u8 id);
 
 #endif

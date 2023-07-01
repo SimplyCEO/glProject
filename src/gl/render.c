@@ -9,6 +9,7 @@
 
 struct Camera camera;
 float drawColour[3] = {0.2f, 0.2f, 0.8f};
+u16 i;
 
 void configureCamera(void)
 {
@@ -52,8 +53,20 @@ void display(void)
   }
   glRotatef(camera.angle, camera.faceX, camera.faceY, camera.faceZ);
 
-  createObject(1, 1);
-  createObject(1, 2);
+  for(i=0; i<256; i++)
+  {
+    bool bDoObjectExists = returnObject(i);
+
+    switch(bDoObjectExists)
+    {
+      case 1:
+      {
+        createObject(1, i);
+        break;
+      }
+      default: break;
+    }
+  }
 
   glutSwapBuffers();
 }

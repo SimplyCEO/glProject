@@ -1,10 +1,15 @@
 #include "types.h"
+#include "register.h"
+
+#include "tools/debug.h"
 
 #include "gl/main.h"
 #include "gl/structures.h"
 
 bool keyStates[256];
+bool bTransformKeyDelay;
 struct KeyMap input;
+u16 delay = 0;
 
 /* Configure keys ASCII/DEC */
 void configureKeys(void)
@@ -30,6 +35,13 @@ void handleKeys(struct Camera *camera, float colour[])
   bool leftKey      = returnKey(input.left);
   bool rightKey     = returnKey(input.right);
   bool transformKey = returnKey(input.transform);
+
+  switch(delay)
+  {
+    case 100: delay = 0; bTransformKeyDelay = false; break;
+    default: break;
+  }
+  delay += 1;
 
   switch(pauseKey)
   {
@@ -63,8 +75,28 @@ void handleKeys(struct Camera *camera, float colour[])
 
   switch(transformKey)
   {
-    case 1: colour[2] = 0.2f; break;
-    default: colour[2] = 0.8f; break;
+    case 1:
+    {
+      switch(bTransformKeyDelay)
+      {
+        case 0:
+        {
+          struct Object object = {1, 0, 2.0f, {0.7f, 0.1f, 0.1f}};
+          bool bIsObjectCreated = addObjectData(&object);
+          switch(bIsObjectCreated)
+          {
+            case 1: debug("Could not create object. MAX size reached.\n", 3); break;
+            default: break;
+          }
+          bTransformKeyDelay = true;
+          debug("Object created.", 1);
+          break;
+        }
+        default: break;
+      }
+      break;
+    }
+    default: break;
   }
 }
 

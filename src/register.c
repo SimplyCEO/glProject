@@ -35,6 +35,48 @@ void registerObjects(void)
   objectRegistration[2] = true;
 }
 
+int returnObject(u8 id)
+{
+  return objectRegistration[id];
+}
+
+u8 addObjectData(struct Object object[])
+{
+  u16 i = 0;
+
+  switch(object->type)
+  {
+    case CUBE:
+    {
+      for(i=0; i<256; i++)
+      {
+        switch(objectRegistration[i])
+        {
+          case 1: break;
+          default:
+          {
+            u16 id = object->id;
+            if(id != i)
+            {
+              id = i;
+            }
+            cube[i].type = object->type;
+            cube[i].id = id;
+            cube[i].size = object->size;
+            cube[i].colour[0] = object->colour[0];
+            cube[i].colour[1] = object->colour[1];
+            cube[i].colour[2] = object->colour[2];
+            objectRegistration[i] = true;
+            return 0;
+          }
+        }
+      }
+    }
+  }
+
+  return 1;
+}
+
 struct Object getObjectData(u8 type, u8 id)
 {
   struct Object temp = { 0, 0, 0 };
