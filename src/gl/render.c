@@ -35,6 +35,7 @@ void display(void)
 
   glTranslatef(camera.x, camera.y, camera.z);
 
+  /*
   camera.angle += 1;
   camera.faceY = 1.0f;
   switch((int)camera.angle)
@@ -52,6 +53,7 @@ void display(void)
     default: break;
   }
   glRotatef(camera.angle, camera.faceX, camera.faceY, camera.faceZ);
+  */
 
   for(i=0; i<256; i++)
   {

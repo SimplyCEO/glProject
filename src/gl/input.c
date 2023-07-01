@@ -81,7 +81,7 @@ void handleKeys(struct Camera *camera, float colour[])
       {
         case 0:
         {
-          struct Object object = {1, 0, 2.0f, {0.7f, 0.1f, 0.1f}};
+          struct Object object = {1, 0, {-(camera->x), -(camera->y), -(camera->z)-5}, 1.0f, {0.7f, 0.1f, 0.1f}};
           bool bIsObjectCreated = addObjectData(&object);
           switch(bIsObjectCreated)
           {

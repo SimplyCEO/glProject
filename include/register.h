@@ -6,10 +6,24 @@ enum ObjectType
   CUBE  = 1
 };
 
+struct Vector2
+{
+  float x;
+  float y;
+};
+
+struct Vector3
+{
+  float x;
+  float y;
+  float z;
+};
+
 struct Object
 {
   enum ObjectType type;
   u8 id;
+  struct Vector3 pos;
   float size;
   float colour[3];
   char texture[128];
