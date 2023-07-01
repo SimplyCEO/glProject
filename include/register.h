@@ -26,6 +26,7 @@ struct Object
   struct Vector3 pos;
   float size;
   float colour[3];
+  float alpha;
   char texture[128];
 };
 

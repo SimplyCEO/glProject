@@ -22,29 +22,29 @@ void createObject(u8 type, u8 id)
     {
       /* Front/Back */
       glBegin(GL_QUADS);
-      glColor3f(object.colour[0], object.colour[1], object.colour[2]);
-      glVertex3f(posX-(size), posY-(size), posZ+(size));
-      glVertex3f(posX-(size), posY+(size), posZ+(size));
-      glVertex3f(posX+(size), posY+(size), posZ+(size));
-      glVertex3f(posX+(size), posY-(size), posZ+(size));
+      glColor4f(object.colour[0], object.colour[1], object.colour[2], object.alpha);
+      glVertex4f(posX-(size), posY-(size), posZ+(size), object.alpha);
+      glVertex4f(posX-(size), posY+(size), posZ+(size), object.alpha);
+      glVertex4f(posX+(size), posY+(size), posZ+(size), object.alpha);
+      glVertex4f(posX+(size), posY-(size), posZ+(size), object.alpha);
       glEnd();
 
       /* Top/Bottom */
       glBegin(GL_QUADS);
-      glColor3f(lightShade[0], lightShade[1], lightShade[2]);
-      glVertex3f(posX-(size), posY+(size), posZ-(size));
-      glVertex3f(posX-(size), posY+(size), posZ+(size));
-      glVertex3f(posX+(size), posY+(size), posZ+(size));
-      glVertex3f(posX+(size), posY+(size), posZ-(size));
+      glColor4f(lightShade[0], lightShade[1], lightShade[2], object.alpha);
+      glVertex4f(posX-(size), posY+(size), posZ-(size), object.alpha);
+      glVertex4f(posX-(size), posY+(size), posZ+(size), object.alpha);
+      glVertex4f(posX+(size), posY+(size), posZ+(size), object.alpha);
+      glVertex4f(posX+(size), posY+(size), posZ-(size), object.alpha);
       glEnd();
 
       /* Left/Right */
       glBegin(GL_QUADS);
-      glColor3f(darkShade[0], darkShade[1], darkShade[2]);
-      glVertex3f(posX-(size), posY-(size), posZ-(size));
-      glVertex3f(posX-(size), posY-(size), posZ+(size));
-      glVertex3f(posX-(size), posY+(size), posZ+(size));
-      glVertex3f(posX-(size), posY+(size), posZ-(size));
+      glColor4f(darkShade[0], darkShade[1], darkShade[2], object.alpha);
+      glVertex4f(posX-(size), posY-(size), posZ-(size), object.alpha);
+      glVertex4f(posX-(size), posY-(size), posZ+(size), object.alpha);
+      glVertex4f(posX-(size), posY+(size), posZ+(size), object.alpha);
+      glVertex4f(posX-(size), posY+(size), posZ-(size), object.alpha);
       glEnd();
     }
   }

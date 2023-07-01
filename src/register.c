@@ -17,6 +17,7 @@ void registerObjects(void)
   cube[0].colour[0] = 0.0f;
   cube[0].colour[1] = 0.0f;
   cube[0].colour[2] = 0.0f;
+  cube[0].alpha = 1.0f;
   objectRegistration[0] = true;
 
   /* ID: 1 - Test Cube */
@@ -29,6 +30,7 @@ void registerObjects(void)
   cube[1].colour[0] = 0.2f;
   cube[1].colour[1] = 0.2f;
   cube[1].colour[2] = 0.8f;
+  cube[1].alpha = 1.0f;
   objectRegistration[1] = true;
 
   /* ID: 2 - Test Cube 2 */
@@ -41,6 +43,7 @@ void registerObjects(void)
   cube[2].colour[0] = 0.3f;
   cube[2].colour[1] = 0.6f;
   cube[2].colour[2] = 0.3f;
+  cube[2].alpha = 1.0f;
   objectRegistration[2] = true;
 }
 
@@ -78,6 +81,7 @@ u8 addObjectData(struct Object object[])
             cube[i].colour[0] = object->colour[0];
             cube[i].colour[1] = object->colour[1];
             cube[i].colour[2] = object->colour[2];
+            cube[i].alpha = object->alpha;
             objectRegistration[i] = true;
             return 0;
           }
