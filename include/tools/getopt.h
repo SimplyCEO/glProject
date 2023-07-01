@@ -3,7 +3,6 @@
 
 enum Flags
 {
-  NONE        = 0,
   FULLSCREEN  = 0
 };
 
