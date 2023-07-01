@@ -45,6 +45,12 @@ Going around is easy by using:
   Space bar for the action.
   ESC to close.
 
+For developers
+--------------
+
+Useful flags:
+MESA_GL_VERSION_OVERRIDE - Sets a OpenGL version, eg: 2.1.
+
 Sources
 -------
 
