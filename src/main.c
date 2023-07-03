@@ -25,9 +25,7 @@ int main(int argc, char *argv[])
   main.height = DEFAULT_WINDOW_HEIGHT;
   strcpy(main.name, "glProject");
 
-  registerObjects();
-  configureKeys();
-  configureCamera();
+  registerEvents(); 
 
   for(i=0; i<argc-1; i++)
   {

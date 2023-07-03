@@ -1,4 +1,5 @@
 #include "types.h"
+#include "object.h"
 
 #include "tools/debug.h"
 
@@ -8,7 +9,6 @@
 #include "gl/input.h"
 
 struct Camera camera;
-u16 i;
 
 void configureCamera(void)
 {
@@ -23,6 +23,9 @@ void configureCamera(void)
 
 void display(void)
 {
+  enum ObjectType type;
+  u16 i;
+
   handleKeys(&camera);
 
   glEnable(GL_BLEND);
@@ -53,21 +56,26 @@ void display(void)
   }
   glRotatef(camera.angle, camera.faceX, camera.faceY, camera.faceZ);
   */
-
-  for(i=0; i<256; i++)
+  /*
+  for(type=0; type<4; type++)
   {
-    bool bDoObjectExists = returnObject(i);
-
-    switch(bDoObjectExists)
+    for(i=0; i<256; i++)
     {
-      case 1:
+      bool bDoObjectExists = returnObject(type, i);
+
+      switch(bDoObjectExists)
       {
-        createObject(1, i);
-        break;
+        case 1:
+        {
+          createObject(type, i);
+          break;
+        }
+        default: break;
       }
-      default: break;
     }
   }
+  */
+  createObject(0, 0);
 
   glutSwapBuffers();
 }

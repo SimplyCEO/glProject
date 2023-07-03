@@ -1,5 +1,5 @@
 #include "types.h"
-#include "register.h"
+#include "object.h"
 
 #include "tools/debug.h"
 
@@ -131,15 +131,8 @@ void handleKeys(struct Camera *camera)
         case 1: break;
         default:
         {
-          struct Object object = {1, 0, {-(camera->x), -(camera->y), -(camera->z)-5}, 1.0f, {0.7f, 0.1f, 0.1f}, 1.0f};
-          bool bIsObjectCreated = addObjectData(&object);
-          switch(bIsObjectCreated)
-          {
-            case 1: debug("Could not create object. MAX size reached.\n", 3); break;
-            default: break;
-          }
+          drawWireframe();
           bTransformKeyDelay = true;
-          debug("Object created.", 1);
           break;
         }
       }
