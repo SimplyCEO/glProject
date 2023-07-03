@@ -1,39 +1,35 @@
 #include "types.h"
-#include "tools/getopt.h"
-#include "tools/string.h"
 
-#include <stdio.h>
+#include "tools/string.h"
 
 int getopt(char *opt, char *shortFlag, char *longFlag)
 {
-  enum Flags flag;
-  u8 i = 0;
-  bool foundFlag = false;
-  bool isExtendedFlag = false;
+  bool bFoundFlag = false;
+  bool bExtendedFlag = false;
 
-  while(!foundFlag)
+  while(!bFoundFlag)
   {
-    switch(opt[i])
+    switch(opt[0])
     {
       case '-':
         {
-          switch (opt[i+1])
+          switch (opt[1])
           {
-            case '-': isExtendedFlag = true; break;
+            case '-': bExtendedFlag = true; break;
             default: break;
           }
-          foundFlag = true;
+          bFoundFlag = true;
         break;
         }
-      default: foundFlag = nil; break;
+      default: bFoundFlag = nil; break;
     }
   }
 
-  switch(foundFlag)
+  switch(bFoundFlag)
   {
     case 1:
       {
-        switch(isExtendedFlag)
+        switch(bExtendedFlag)
         {
           case 0:
             {

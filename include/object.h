@@ -1,6 +1,7 @@
 #ifndef OBJECT_HEADER_FILE
 #define OBJECT_HEADER_FILE
 
+#include "config.h"
 #include "matrix.h"
 
 enum ObjectType
@@ -26,13 +27,13 @@ struct Vertex3
 /* struct Mesh2 mesh2.vertex.pos = {{0.0f, 0.0f}^3}^8; */
 struct Mesh2
 {
-  struct Vertex2 vertex[8];
+  struct Vertex2 vertex[MAX_VERTEX2_SIZE];
 };
 
 /* struct Mesh3 mesh3.vertex.pos = {{0.0f, 0.0f, 0.0f}^3}^512; */
 struct Mesh3
 {
-  struct Vertex3 vertex[512];
+  struct Vertex3 vertex[MAX_VERTEX3_SIZE];
 };
 
 struct Object2
@@ -60,7 +61,7 @@ struct Object3
 
 void registerObjects(u8 type);
 int returnObject(u8 type, u8 id);
-u8 addObjectData(struct Object3 *object);
+u8 addObjectData(struct Object3 object);
 struct Object3 getObjectData(u8 type, u8 id);
 
 #endif

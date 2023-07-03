@@ -4,9 +4,10 @@
 #include "tools/debug.h"
 
 #include "gl/main.h"
-#include "gl/structures.h"
 #include "gl/draw.h"
-#include "gl/input.h"
+#include "gl/renderer.h"
+
+#include "input/keyboard.h"
 
 struct Camera camera;
 
@@ -23,7 +24,7 @@ void configureCamera(void)
 
 void display(void)
 {
-  enum ObjectType type;
+  enum ObjectType type = 0;
   u16 i;
 
   handleKeys(&camera);
@@ -36,13 +37,10 @@ void display(void)
   glLoadIdentity();
 
   glTranslatef(camera.x, camera.y, camera.z);
-
-  /*
-  camera.angle += 1;
-  camera.faceY = 1.0f;
+  
   switch((int)camera.angle)
   {
-    case -1:
+    case -361:
     {
       camera.angle += 360;
       break;
@@ -55,11 +53,10 @@ void display(void)
     default: break;
   }
   glRotatef(camera.angle, camera.faceX, camera.faceY, camera.faceZ);
-  */
-  /*
+  
   for(type=0; type<4; type++)
   {
-    for(i=0; i<256; i++)
+    for(i=0; i<MAX_OBJECTS; i++)
     {
       bool bDoObjectExists = returnObject(type, i);
 
@@ -74,8 +71,6 @@ void display(void)
       }
     }
   }
-  */
-  createObject(0, 0);
 
   glutSwapBuffers();
 }
@@ -92,11 +87,11 @@ void reshape(i32 width, i32 height)
   glMatrixMode(GL_MODELVIEW);
 }
 
-int initializeGL(struct Render render)
+int initializeGL(struct Renderer window)
 {
   glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
-  glutInitWindowSize(render.width, render.height);
-  glutCreateWindow(render.name);
+  glutInitWindowSize(window.width, window.height);
+  glutCreateWindow(window.name);
 
   return 0;
 }

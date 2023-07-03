@@ -3,8 +3,8 @@
 
 #include <string.h>
 
-struct Object3 stObject[256];
-bool bObjectRegistration[4][256];
+struct Object3 stObject[MAX_OBJECTS];
+bool bObjectRegistration[4][MAX_OBJECTS];
 
 void registerObjects(u8 type)
 {
@@ -34,38 +34,27 @@ int returnObject(u8 type, u8 id)
   return bObjectRegistration[type][id];
 }
 
-u8 addObjectData(struct Object3 *object)
+u8 addObjectData(struct Object3 object)
 {
-  enum ObjectType type = object->type;
+  enum ObjectType type = object.type;
   u16 i = 0;
 
   switch(type)
   {
     case CUBE:
     {
-      for(i=0; i<256; i++)
+      for(i=0; i<MAX_OBJECTS; i++)
       {
         switch(bObjectRegistration[type][i])
         {
           case 1: break;
           default:
           {
-            u16 id = object->id;
+            u16 id = object.id;
             if(id != i)
             {
               id = i;
             }
-            /*stObject[i].type = object->type;
-            stObject[i].id = id;
-            stObject[i].size = object->size;
-            stObject[i].pos.x = object->pos.x;
-            stObject[i].pos.y = object->pos.y;
-            stObject[i].pos.z = object->pos.z;
-            stObject[i].colour[0] = object->colour[0];
-            stObject[i].colour[1] = object->colour[1];
-            stObject[i].colour[2] = object->colour[2];
-            stObject[i].alpha = object->alpha;
-            bObjectRegistration[i] = true;*/
             return 0;
           }
         }

@@ -1,5 +1,5 @@
-#ifndef GL_INPUT_HEADER_FILE
-#define GL_INPUT_HEADER_FILE
+#ifndef INPUT_KEYBOARD_HEADER_FILE
+#define INPUT_KEYBOARD_HEADER_FILE
 
 void configureKeys(void);
 int returnKey(u8 key);

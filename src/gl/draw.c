@@ -16,7 +16,7 @@ void createMeshPlane(struct Object3 *object)
   float *colour = object->colour;
   float alpha = object->alpha;
 
-  for(i=0; i<512; i++)
+  for(i=0; i<MAX_VERTEX3_SIZE; i++)
   {
     switch(bDrawWireframe)
     {

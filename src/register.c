@@ -1,9 +1,9 @@
 #include "types.h"
 #include "object.h"
 
-#include "gl/structures.h"
-#include "gl/input.h"
-#include "gl/render.h"
+#include "gl/renderer.h"
+
+#include "input/keyboard.h"
 
 void registerEvents(void)
 {

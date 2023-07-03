@@ -25,7 +25,7 @@ PWD           :=  $(shell pwd)
 OBJ_DIR       :=  $(PWD)/obj
 SRC_DIR       :=  $(PWD)/src
 BIN_DIR       :=  $(PWD)/bin
-DIRS          :=  obj obj/tools obj/gl bin
+DIRS          :=  obj obj/tools obj/gl obj/input bin
 HEADERS       :=  -I./include/
 LIBRARIES     :=  -lm
 
@@ -38,10 +38,12 @@ endif
 _TARGETS      :=  glproject
 _SOURCES      :=  main.c object.c register.c \
                   tools/debug.c tools/getopt.c tools/string.c \
-                  gl/draw.c gl/input.c gl/render.c
+                  gl/draw.c gl/renderer.c \
+                  input/keyboard.c
 _OBJECTS      :=  main.o object.o register.o \
                   tools/debug.o tools/getopt.o tools/string.o \
-                  gl/draw.o gl/input.o gl/render.o
+                  gl/draw.o gl/renderer.o \
+                  input/keyboard.o
 
 TARGETS       :=  $(addprefix $(BIN_DIR)/, $(_TARGETS))
 SOURCES       :=  $(addprefix $(SRC_DIR)/, $(_SOURCES))
