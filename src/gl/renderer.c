@@ -47,11 +47,11 @@ void display(void)
   camera.rot[0].face.x = angleX.face.x;
   camera.rot[0].face.y = angleX.face.y;
   camera.rot[0].face.z = angleX.face.z;
-  camera.rot[0].deg = -(angleX.deg)*(camera.rot[0].face.y);
+  camera.rot[0].deg    = (angleX.deg)*(camera.rot[0].face.y);
   camera.rot[1].face.x = angleY.face.x;
   camera.rot[1].face.y = angleY.face.y;
   camera.rot[1].face.z = angleY.face.z;
-  camera.rot[1].deg = -(angleY.deg)*(camera.rot[1].face.x);
+  camera.rot[1].deg    = (angleY.deg)*(camera.rot[1].face.x);
 
   for(i=0; i<2; i++)
   {
