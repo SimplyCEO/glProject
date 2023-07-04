@@ -20,10 +20,20 @@ void createMeshPlane(struct Object3 *object)
   {
     switch(bDrawWireframe)
     {
-      case 0: glBegin(GL_TRIANGLES);
-      default: glBegin(GL_LINE_LOOP);
+      case 0:
+      {
+        glBegin(GL_TRIANGLES);
+        glColor4f(colour[0], colour[1], colour[2], alpha);
+        break;
+      }
+      default:
+      {
+        glBegin(GL_LINE_LOOP);
+        glColor4f(0.1f, 0.8f, 0.1f, 1.0f);
+        break;
+      }
     }
-    glColor4f(colour[0], colour[1], colour[2], alpha);
+
     for(ii=0; ii<3; ii++)
     {
       float posX = object->vec.pos.x+(object->mesh.vertex[i].pos[ii].x);
