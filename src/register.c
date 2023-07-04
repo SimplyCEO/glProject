@@ -4,10 +4,12 @@
 #include "gl/renderer.h"
 
 #include "input/keyboard.h"
+#include "input/mouse.h"
 
 void registerEvents(void)
 {
   registerObjects(0);
-  configureKeys();
+  configureKeyboardKeys();
+  configureMouseKeys();
   configureCamera();
 }

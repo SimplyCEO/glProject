@@ -8,6 +8,7 @@
 #include "gl/renderer.h"
 
 #include "input/keyboard.h"
+#include "input/mouse.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -42,8 +43,11 @@ int main(int argc, char **argv)
   glutIdleFunc(display);
   glutReshapeFunc(reshape);
 
-  glutKeyboardFunc(keyPressed);
-  glutKeyboardUpFunc(keyReleased);
+  glutKeyboardFunc(keyboardKeyPressed);
+  glutKeyboardUpFunc(keyboardKeyReleased);
+
+  glutMouseFunc(mouseKeyEvent);
+  glutPassiveMotionFunc(mouseMovement);
 
   glutMainLoop();
 

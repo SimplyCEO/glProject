@@ -16,59 +16,59 @@ struct KeyboardMap
   u8 right;
   u8 transform;
   u8 sprint[4];
-}input;
+}keyboardInput;
 
-bool bKeyState[256];
-u8 keyDelay = 0;
+bool bKeyboardKeyState[256];
+u8 keyboardKeyDelay = 0;
 
 /* Configure keys ASCII/DEC */
-void configureKeys(void)
+void configureKeyboardKeys(void)
 {
-  input.pause     = 27;
-  input.up        = 'w';
-  input.down      = 's';
-  input.left      = 'a';
-  input.right     = 'd';
-  input.transform = 32;
-  input.sprint[0] = input.up-32;
-  input.sprint[1] = input.down-32;
-  input.sprint[2] = input.left-32;
-  input.sprint[3] = input.right-32;
+  keyboardInput.pause     = 27;
+  keyboardInput.up        = 'w';
+  keyboardInput.down      = 's';
+  keyboardInput.left      = 'a';
+  keyboardInput.right     = 'd';
+  keyboardInput.transform = 32;
+  keyboardInput.sprint[0] = keyboardInput.up-32;
+  keyboardInput.sprint[1] = keyboardInput.down-32;
+  keyboardInput.sprint[2] = keyboardInput.left-32;
+  keyboardInput.sprint[3] = keyboardInput.right-32;
 }
 
-int returnKey(u8 key)
+int returnKeyboardKey(u8 key)
 {
-  return bKeyState[key];
+  return bKeyboardKeyState[key];
 }
 
-void handleKeys(struct Camera *camera)
+void handleKeyboardKeys(struct Camera *camera)
 {
   u8 i;
-  bool pauseKey     = returnKey(input.pause);
-  bool upKey        = returnKey(input.up);
-  bool downKey      = returnKey(input.down);
-  bool leftKey      = returnKey(input.left);
-  bool rightKey     = returnKey(input.right);
-  bool transformKey = returnKey(input.transform);
+  bool pauseKey     = returnKeyboardKey(keyboardInput.pause);
+  bool upKey        = returnKeyboardKey(keyboardInput.up);
+  bool downKey      = returnKeyboardKey(keyboardInput.down);
+  bool leftKey      = returnKeyboardKey(keyboardInput.left);
+  bool rightKey     = returnKeyboardKey(keyboardInput.right);
+  bool transformKey = returnKeyboardKey(keyboardInput.transform);
   bool bSprintKey   = false;
   float fSprint     = 1.0f;
 
-  switch(keyDelay)
+  switch(keyboardKeyDelay)
   {
     case 0: break;
     case 50:
     {
-      keyDelay = 0;
+      keyboardKeyDelay = 0;
       break;
     }
-    default: keyDelay++; break;
+    default: keyboardKeyDelay++; break;
   }
 
   switch(pauseKey){case 1: exit(0); break; default: break;}
 
   for(i=0; i<4; i++)
   {
-    bool bBufferSprintKey = returnKey(input.sprint[i]);
+    bool bBufferSprintKey = returnKeyboardKey(keyboardInput.sprint[i]);
 
     switch(bBufferSprintKey)
     {
@@ -88,10 +88,10 @@ void handleKeys(struct Camera *camera)
     case 0:
     {
       bSprintKey = false;
-      bKeyState[input.sprint[0]] = false;
+      bKeyboardKeyState[keyboardInput.sprint[0]] = false;
       break;
     }
-    case 1: camera->z += fSprint*0.01f; break;
+    case 1: camera->pos.z += fSprint*0.01f; break;
     default: break;
   }
 
@@ -100,10 +100,10 @@ void handleKeys(struct Camera *camera)
     case 0:
     {
       bSprintKey = false;
-      bKeyState[input.sprint[1]] = false;
+      bKeyboardKeyState[keyboardInput.sprint[1]] = false;
       break;
     }
-    case 1: camera->z -= fSprint*0.01f; break;
+    case 1: camera->pos.z -= fSprint*0.01f; break;
     default: break;
   }
 
@@ -112,10 +112,10 @@ void handleKeys(struct Camera *camera)
     case 0:
     {
       bSprintKey = false;
-      bKeyState[input.sprint[2]] = false;
+      bKeyboardKeyState[keyboardInput.sprint[2]] = false;
       break;
     }
-    case 1: camera->x += fSprint*0.01f; break;
+    case 1: camera->pos.x += fSprint*0.01f; break;
     default: break;
   }
 
@@ -124,10 +124,10 @@ void handleKeys(struct Camera *camera)
     case 0:
     {
       bSprintKey = false;
-      bKeyState[input.sprint[3]] = false;
+      bKeyboardKeyState[keyboardInput.sprint[3]] = false;
       break;
     }
-    case 1: camera->x -= fSprint*0.01f; break;
+    case 1: camera->pos.x -= fSprint*0.01f; break;
     default: break;
   }
 
@@ -135,12 +135,12 @@ void handleKeys(struct Camera *camera)
   {
     case 1:
     {
-      switch(keyDelay)
+      switch(keyboardKeyDelay)
       {
         case 0:
         {
           drawWireframe();
-          keyDelay = 1;
+          keyboardKeyDelay = 1;
           break;
         }
         default: break;
@@ -151,12 +151,12 @@ void handleKeys(struct Camera *camera)
   }
 }
 
-void keyPressed(u8 key, i32 x, i32 y)
+void keyboardKeyPressed(u8 key, i32 x, i32 y)
 {
-  bKeyState[key] = true;
+  bKeyboardKeyState[key] = true;
 }
 
-void keyReleased(u8 key, i32 x, i32 y)
+void keyboardKeyReleased(u8 key, i32 x, i32 y)
 {
   /*
   *   TODO:  This function will be used later for something.
@@ -164,6 +164,6 @@ void keyReleased(u8 key, i32 x, i32 y)
   *          nothing useful.
   */
 
-  bKeyState[key] = false;
+  bKeyboardKeyState[key] = false;
 }
 

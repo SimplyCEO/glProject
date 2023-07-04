@@ -1,6 +1,8 @@
 #ifndef GL_RENDERER_HEADER_FILE
 #define GL_RENDERER_HEADER_FILE
 
+#include "matrix.h"
+
 struct Renderer
 {
   i16  width;
@@ -10,13 +12,8 @@ struct Renderer
 
 struct Camera
 {
-  float x;
-  float y;
-  float z;
-  float faceX;
-  float faceY;
-  float faceZ;
-  float angle;
+  struct Matrix3 pos;
+  struct Rotation3 rot[2];
 };
 
 void configureCamera(void);
