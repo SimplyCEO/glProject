@@ -15,7 +15,7 @@ struct Camera camera;
 void configureCamera(void)
 {
   camera.pos.x         =  0.0f;
-  camera.pos.y         = -2.0f;
+  camera.pos.y         = -0.7f;
   camera.pos.z         = -5.0f;
   camera.rot[0].face.x =  0.0f;
   camera.rot[0].face.y =  0.0f;
