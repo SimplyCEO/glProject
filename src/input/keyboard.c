@@ -1,5 +1,6 @@
 #include "types.h"
 #include "object.h"
+#include "camera.h"
 
 #include "tools/debug.h"
 

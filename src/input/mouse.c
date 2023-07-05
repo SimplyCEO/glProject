@@ -40,8 +40,8 @@ struct Rotation3 getCameraAngle(u8 axis)
 
   switch(axis)
   {
-    case 0: rotation = (struct Rotation3){mouseDragX, {0.0f, mouseSensitivityY, 0.0f}}; break;
-    default: rotation = (struct Rotation3){mouseDragY, {mouseSensitivityX, 0.0f, 0.0f}}; break;
+    case 0: rotation = (struct Rotation3){mouseDragX, {0.0f , mouseSensitivityY, 0.0f}}; break;
+    default: rotation = (struct Rotation3){mouseDragY, {mouseSensitivityX, 0.0f, mouseSensitivityX}}; break;
   }
 
   return rotation;

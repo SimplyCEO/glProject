@@ -1,7 +1,6 @@
 #include "types.h"
 #include "object.h"
-
-#include "gl/renderer.h"
+#include "camera.h"
 
 #include "input/keyboard.h"
 #include "input/mouse.h"

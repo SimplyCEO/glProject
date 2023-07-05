@@ -39,11 +39,11 @@ _TARGETS      :=  glproject
 _SOURCES      :=  main.c object.c register.c \
                   tools/debug.c tools/getopt.c tools/string.c \
                   gl/draw.c gl/renderer.c \
-                  input/keyboard.c input/mouse.c
+                  input/keyboard.c input/mouse.c camera.c
 _OBJECTS      :=  main.o object.o register.o \
                   tools/debug.o tools/getopt.o tools/string.o \
                   gl/draw.o gl/renderer.o \
-                  input/keyboard.o input/mouse.o
+                  input/keyboard.o input/mouse.o camera.o
 
 TARGETS       :=  $(addprefix $(BIN_DIR)/, $(_TARGETS))
 SOURCES       :=  $(addprefix $(SRC_DIR)/, $(_SOURCES))
