@@ -63,6 +63,7 @@ void registerObjects(u8 type);
 int returnObject(u8 type, u8 id);
 u8 addObjectData(struct Object3 object);
 struct Object3 getObjectData(u8 type, u8 id);
+void setObjectData(struct Object3 object);
 
 #endif
 

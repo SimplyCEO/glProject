@@ -10,11 +10,11 @@ void drawWireframe(void)
   bDrawWireframe = !bDrawWireframe;
 }
 
-void createMeshPlane(struct Object3 *object)
+void createMeshPlane(struct Object3 object)
 {
   u16 i, ii;
-  float *colour = object->colour;
-  float alpha = object->alpha;
+  float *colour = object.colour;
+  float alpha = object.alpha;
 
   for(i=0; i<MAX_VERTEX3_SIZE; i++)
   {
@@ -36,18 +36,37 @@ void createMeshPlane(struct Object3 *object)
 
     for(ii=0; ii<3; ii++)
     {
-      float posX = object->vec.pos.x+(object->mesh.vertex[i].pos[ii].x);
-      float posY = object->vec.pos.y+(object->mesh.vertex[i].pos[ii].y);
-      float posZ = object->vec.pos.z+(object->mesh.vertex[i].pos[ii].z);
+      float posX = object.mesh.vertex[i].pos[ii].x;
+      float posY = object.mesh.vertex[i].pos[ii].y;
+      float posZ = object.mesh.vertex[i].pos[ii].z;
       glVertex4f(posX, posY, posZ, alpha);
     }
+
     glEnd();
   }
 }
 
 void createObject(u8 type, u16 id)
 {
+  glPushMatrix();
+
   struct Object3 object = getObjectData(type, id);
 
-  createMeshPlane(&object);
+  object.vec.rot.deg += 1.0f;
+  glTranslatef(object.vec.pos.x, object.vec.pos.y, object.vec.pos.z);
+  glRotatef(object.vec.rot.deg, object.vec.rot.face.x,
+                                object.vec.rot.face.y,
+                                object.vec.rot.face.z);
+
+  switch((int)object.vec.rot.deg)
+  {
+    case -361: object.vec.rot.deg += 360; break;
+    case 361:  object.vec.rot.deg -= 360; break;
+    default: break;
+  }
+
+  createMeshPlane(object);
+  setObjectData(object);
+
+  glPopMatrix();
 }
