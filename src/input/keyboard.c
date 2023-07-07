@@ -8,6 +8,8 @@
 #include "gl/draw.h"
 #include "gl/renderer.h"
 
+#include <math.h>
+
 struct KeyboardMap
 {
   u8 pause;
@@ -90,9 +92,10 @@ void handleKeyboardKeys(struct Camera *camera)
     {
       bSprintKey = false;
       bKeyboardKeyState[keyboardInput.sprint[0]] = false;
+      camera->vel.fw = 0;
       break;
     }
-    case 1: camera->pos.z += fSprint*0.01f; break;
+    case 1: camera->vel.fw = fSprint*0.01f; break;
     default: break;
   }
 
@@ -102,9 +105,10 @@ void handleKeyboardKeys(struct Camera *camera)
     {
       bSprintKey = false;
       bKeyboardKeyState[keyboardInput.sprint[1]] = false;
+      camera->vel.bw = 0;
       break;
     }
-    case 1: camera->pos.z -= fSprint*0.01f; break;
+    case 1: camera->vel.bw = fSprint*0.01f; break;
     default: break;
   }
 
@@ -114,9 +118,10 @@ void handleKeyboardKeys(struct Camera *camera)
     {
       bSprintKey = false;
       bKeyboardKeyState[keyboardInput.sprint[2]] = false;
+      camera->vel.lt = 0;
       break;
     }
-    case 1: camera->pos.x += fSprint*0.01f; break;
+    case 1: camera->vel.lt = fSprint*0.01f; break;
     default: break;
   }
 
@@ -126,9 +131,10 @@ void handleKeyboardKeys(struct Camera *camera)
     {
       bSprintKey = false;
       bKeyboardKeyState[keyboardInput.sprint[3]] = false;
+      camera->vel.rt = 0;
       break;
     }
-    case 1: camera->pos.x -= fSprint*0.01f; break;
+    case 1: camera->vel.rt = fSprint*0.01f; break;
     default: break;
   }
 

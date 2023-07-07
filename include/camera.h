@@ -7,6 +7,7 @@ struct Camera
 {
   struct Matrix3 pos;
   struct Rotation3 rot[2];
+  struct Acceleration3 vel;
 };
 
 void configureCamera(void);

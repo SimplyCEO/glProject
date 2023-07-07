@@ -57,6 +57,57 @@ void registerObjects(u8 type)
   memcpy(stObject[type][0].colour, (float[3]){0.3f, 0.3f, 0.6f}, sizeof stObject[type][0].colour);
   stObject[type][0].alpha = 1.0f;
   bObjectRegistration[type][0] = true;
+
+
+  stObject[type][1].type = 0;
+  stObject[type][1].id = 1;
+  /* Face */
+  stObject[type][1].mesh.vertex[0].pos[0]  = (struct Matrix3){-0.5f, -0.5f,  0.5f};
+  stObject[type][1].mesh.vertex[0].pos[1]  = (struct Matrix3){-0.5f,  0.5f,  0.5f};
+  stObject[type][1].mesh.vertex[0].pos[2]  = (struct Matrix3){ 0.5f,  0.5f,  0.5f};
+  stObject[type][1].mesh.vertex[1].pos[0]  = (struct Matrix3){-0.5f, -0.5f,  0.5f};
+  stObject[type][1].mesh.vertex[1].pos[1]  = (struct Matrix3){ 0.5f,  0.5f,  0.5f};
+  stObject[type][1].mesh.vertex[1].pos[2]  = (struct Matrix3){ 0.5f, -0.5f,  0.5f};
+  /* Back */
+  stObject[type][1].mesh.vertex[2].pos[0]  = (struct Matrix3){ 0.5f, -0.5f, -0.5f};
+  stObject[type][1].mesh.vertex[2].pos[1]  = (struct Matrix3){ 0.5f,  0.5f, -0.5f};
+  stObject[type][1].mesh.vertex[2].pos[2]  = (struct Matrix3){-0.5f,  0.5f, -0.5f};
+  stObject[type][1].mesh.vertex[3].pos[0]  = (struct Matrix3){ 0.5f, -0.5f, -0.5f};
+  stObject[type][1].mesh.vertex[3].pos[1]  = (struct Matrix3){-0.5f,  0.5f, -0.5f};
+  stObject[type][1].mesh.vertex[3].pos[2]  = (struct Matrix3){-0.5f, -0.5f, -0.5f};
+  /* Right */
+  stObject[type][1].mesh.vertex[4].pos[0]  = (struct Matrix3){ 0.5f,  0.5f, -0.5f};
+  stObject[type][1].mesh.vertex[4].pos[1]  = (struct Matrix3){ 0.5f, -0.5f, -0.5f};
+  stObject[type][1].mesh.vertex[4].pos[2]  = (struct Matrix3){ 0.5f, -0.5f,  0.5f};
+  stObject[type][1].mesh.vertex[5].pos[0]  = (struct Matrix3){ 0.5f,  0.5f, -0.5f};
+  stObject[type][1].mesh.vertex[5].pos[1]  = (struct Matrix3){ 0.5f, -0.5f,  0.5f};
+  stObject[type][1].mesh.vertex[5].pos[2]  = (struct Matrix3){ 0.5f,  0.5f,  0.5f};
+  /* Left */
+  stObject[type][1].mesh.vertex[5].pos[0]  = (struct Matrix3){-0.5f, -0.5f, -0.5f};
+  stObject[type][1].mesh.vertex[5].pos[1]  = (struct Matrix3){-0.5f,  0.5f, -0.5f};
+  stObject[type][1].mesh.vertex[5].pos[2]  = (struct Matrix3){-0.5f,  0.5f,  0.5f};
+  stObject[type][1].mesh.vertex[6].pos[0]  = (struct Matrix3){-0.5f, -0.5f, -0.5f};
+  stObject[type][1].mesh.vertex[6].pos[1]  = (struct Matrix3){-0.5f,  0.5f,  0.5f};
+  stObject[type][1].mesh.vertex[6].pos[2]  = (struct Matrix3){-0.5f, -0.5f,  0.5f};
+  /* Top */
+  stObject[type][1].mesh.vertex[7].pos[0]  = (struct Matrix3){-0.5f,  0.5f,  0.5f};
+  stObject[type][1].mesh.vertex[7].pos[1]  = (struct Matrix3){-0.5f,  0.5f, -0.5f};
+  stObject[type][1].mesh.vertex[7].pos[2]  = (struct Matrix3){ 0.5f,  0.5f, -0.5f};
+  stObject[type][1].mesh.vertex[8].pos[0]  = (struct Matrix3){-0.5f,  0.5f,  0.5f};
+  stObject[type][1].mesh.vertex[8].pos[1]  = (struct Matrix3){ 0.5f,  0.5f, -0.5f};
+  stObject[type][1].mesh.vertex[8].pos[2]  = (struct Matrix3){ 0.5f,  0.5f,  0.5f};
+  /* Bottom */
+  stObject[type][1].mesh.vertex[9].pos[0]  = (struct Matrix3){-0.5f, -0.5f, -0.5f};
+  stObject[type][1].mesh.vertex[9].pos[1]  = (struct Matrix3){-0.5f, -0.5f,  0.5f};
+  stObject[type][1].mesh.vertex[9].pos[2]  = (struct Matrix3){ 0.5f, -0.5f,  0.5f};
+  stObject[type][1].mesh.vertex[10].pos[0] = (struct Matrix3){-0.5f, -0.5f, -0.5f};
+  stObject[type][1].mesh.vertex[10].pos[1] = (struct Matrix3){ 0.5f, -0.5f,  0.5f};
+  stObject[type][1].mesh.vertex[10].pos[2] = (struct Matrix3){ 0.5f, -0.5f, -0.5f};
+  stObject[type][1].vec.pos = (struct Matrix3){0.0f, 0.0f, 1.0f};
+  stObject[type][1].vec.rot = (struct Rotation3){0.0f, {0.0f, 1.0f, 0.0f}};
+  memcpy(stObject[type][1].colour, (float[3]){0.7f, 0.1f, 0.2f}, sizeof stObject[type][0].colour);
+  stObject[type][1].alpha = 1.0f;
+  bObjectRegistration[type][1] = true;
 }
 
 int returnObject(u8 type, u8 id)
