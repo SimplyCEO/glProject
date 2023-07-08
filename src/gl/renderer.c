@@ -17,12 +17,13 @@ void display(void)
   struct Camera camera = getCameraValue(0);
   u16 i;
 
-  glEnable(GL_BLEND);
-  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
   glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
   glClear(GL_COLOR_BUFFER_BIT);
   glLoadIdentity();
+
+  glEnable(GL_BLEND);
+  glEnable(GL_TEXTURE_2D);
+  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
   handleKeyboardKeys(&camera);
   callCameraMovement(camera);

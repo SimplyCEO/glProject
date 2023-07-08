@@ -1,5 +1,6 @@
 #include "types.h"
 #include "object.h"
+#include "texture.h"
 
 #include "gl/main.h"
 
@@ -15,6 +16,9 @@ void createMeshPlane(struct Object3 object)
   u16 i, ii;
   float *colour = object.colour;
   float alpha = object.alpha;
+  GLuint texture = loadTexture(object.texture, 256, 256);
+
+  glBindTexture(GL_TEXTURE_3D, texture);
 
   for(i=0; i<MAX_VERTEX3_SIZE; i++)
   {
@@ -39,6 +43,7 @@ void createMeshPlane(struct Object3 object)
       float posX = object.mesh.vertex[i].pos[ii].x;
       float posY = object.mesh.vertex[i].pos[ii].y;
       float posZ = object.mesh.vertex[i].pos[ii].z;
+      glTexCoord3f(posX, posY, posZ);
       glVertex4f(posX, posY, posZ, alpha);
     }
 

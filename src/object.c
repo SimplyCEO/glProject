@@ -56,39 +56,8 @@ void registerObjects(u8 type)
   stObject[type][0].vec.rot = (struct Rotation3){0.0f, {0.0f, 1.0f, 0.0f}};
   memcpy(stObject[type][0].colour, (float[3]){0.3f, 0.3f, 0.6f}, sizeof stObject[type][0].colour);
   stObject[type][0].alpha = 1.0f;
+  strcpy(stObject[type][0].texture, "assets/buffer.bmp");
   bObjectRegistration[type][0] = true;
-
-  u8 count = 0;
-  u16 i;
-  float posX = -8.0f, posZ = 8.0f;
-  bool bChangeColour = false;
-  for(i=1; i<1025; i++)
-  {
-    stObject[type][i].mesh.vertex[0].pos[0] = (struct Matrix3){-0.5f, -0.5f, -0.5f};
-    stObject[type][i].mesh.vertex[0].pos[1] = (struct Matrix3){-0.5f, -0.5f,  0.5f};
-    stObject[type][i].mesh.vertex[0].pos[2] = (struct Matrix3){ 0.5f, -0.5f,  0.5f};
-    stObject[type][i].mesh.vertex[1].pos[0] = (struct Matrix3){-0.5f, -0.5f, -0.5f};
-    stObject[type][i].mesh.vertex[1].pos[1] = (struct Matrix3){ 0.5f, -0.5f,  0.5f};
-    stObject[type][i].mesh.vertex[1].pos[2] = (struct Matrix3){ 0.5f, -0.5f, -0.5f};
-    stObject[type][i].vec.pos = (struct Matrix3){posX, 0.0f, posZ};
-    stObject[type][i].vec.rot = (struct Rotation3){0.0f, {0.0f, 0.0f, 0.0f}};
-    switch(bChangeColour)
-    {
-      case 0: memcpy(stObject[type][i].colour, (float[3]){0.3f, 0.7f, 0.3f}, sizeof stObject[type][i].colour); break;
-      case 1: memcpy(stObject[type][i].colour, (float[3]){0.1f, 0.7f, 0.1f}, sizeof stObject[type][i].colour); break;
-      default: break;
-    }
-    stObject[type][i].alpha = 1.0f;
-    bObjectRegistration[type][i] = true;
-    posX += 1;
-    switch(count)
-    {
-      case 16: posX -= 16; posZ -= 1; count = 0; break;
-      default: break;
-    }
-    bChangeColour = !bChangeColour;
-    count++;
-  }
 }
 
 int returnObject(u8 type, u8 id)

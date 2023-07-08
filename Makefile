@@ -30,7 +30,7 @@ HEADERS       :=  -I./include/
 LIBRARIES     :=  -lm
 
 ifndef MINGW_CHOST
-	LIBRARIES   +=  -lGL -lGLU -lglut
+	LIBRARIES   +=  -lGL -lGLEW -lGLU -lglut
 else
 	LIBRARIES   += -lopengl32 -lglu32 -lfreeglut
 endif
@@ -39,11 +39,11 @@ _TARGETS      :=  glproject
 _SOURCES      :=  main.c object.c register.c \
                   tools/debug.c tools/getopt.c tools/math.c tools/string.c \
                   gl/draw.c gl/renderer.c \
-                  input/keyboard.c input/mouse.c camera.c
+                  input/keyboard.c input/mouse.c camera.c texture.c
 _OBJECTS      :=  main.o object.o register.o \
                   tools/debug.o tools/getopt.o tools/math.o tools/string.o \
                   gl/draw.o gl/renderer.o \
-                  input/keyboard.o input/mouse.o camera.o
+                  input/keyboard.o input/mouse.o camera.o texture.o
 
 TARGETS       :=  $(addprefix $(BIN_DIR)/, $(_TARGETS))
 SOURCES       :=  $(addprefix $(SRC_DIR)/, $(_SOURCES))
