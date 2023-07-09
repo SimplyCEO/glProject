@@ -24,6 +24,13 @@ struct Vertex3
   struct Matrix3 pos[3];
 };
 
+struct Texture3
+{
+  char name[256];
+  u16 sizeX;
+  u16 sizeY;
+};
+
 /* struct Mesh2 mesh2.vertex.pos = {{0.0f, 0.0f}^3}^8; */
 struct Mesh2
 {
@@ -56,7 +63,7 @@ struct Object3
   float size;
   float colour[3];
   float alpha;
-  char texture[128];
+  struct Texture3 texture;
 };
 
 void registerObjects(u8 type);

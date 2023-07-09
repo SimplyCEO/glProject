@@ -56,7 +56,9 @@ void registerObjects(u8 type)
   stObject[type][0].vec.rot = (struct Rotation3){0.0f, {0.0f, 1.0f, 0.0f}};
   memcpy(stObject[type][0].colour, (float[3]){1.0f, 1.0f, 1.0f}, sizeof stObject[type][0].colour);
   stObject[type][0].alpha = 1.0f;
-  strcpy(stObject[type][0].texture, "assets/buffer.bmp");
+  strcpy(stObject[type][0].texture.name, "assets/buffer.bmp");
+  stObject[type][0].texture.sizeX = 256;
+  stObject[type][0].texture.sizeY = 256;
   bObjectRegistration[type][0] = true;
 
   /* Simple terrain */
@@ -73,7 +75,9 @@ void registerObjects(u8 type)
   stObject[type][1].vec.rot = (struct Rotation3){0.0f, {0.0f, 0.0f, 0.0f}};
   memcpy(stObject[type][1].colour, (float[3]){1.0f, 1.0f, 1.0f}, sizeof stObject[type][0].colour);
   stObject[type][1].alpha = 1.0f;
-  strcpy(stObject[type][1].texture, "assets/terrain.bmp");
+  strcpy(stObject[type][1].texture.name, "assets/terrain.bmp");
+  stObject[type][1].texture.sizeX = 256;
+  stObject[type][1].texture.sizeY = 256;
   bObjectRegistration[type][1] = true;
 }
 

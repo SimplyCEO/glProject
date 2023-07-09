@@ -16,7 +16,9 @@ void createMeshPlane(struct Object3 object)
   u16 i, ii;
   float *colour = object.colour;
   float alpha = object.alpha;
-  GLuint texture = loadTexture(object.texture, 256, 256);
+  GLuint texture = loadTexture(object.texture.name,
+                               object.texture.sizeX,
+                               object.texture.sizeY);
 
   glBindTexture(GL_TEXTURE_3D, texture);
 
