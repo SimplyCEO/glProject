@@ -5,15 +5,22 @@
 GLuint loadTexture(const char *filename, i32 width, i32 height)
 {
   GLuint texture;
+  i32 size = width*height*3;
   u8 *data;
+  char buffer[2];
   FILE *file;
 
   file = fopen(filename, "rb");
-  if(file == NULL) return 1;
+  fgets(buffer, 2, file);
+  switch(buffer[0])
+  {
+    case 0 ... 127: break;
+    default: return 1;
+  }
 
-  data = (u8 *)malloc(width*height*3);
+  data = (u8 *)malloc(size);
 
-  fread(data, width*height*3, 1, file);
+  fread(data, size, 1, file);
   fclose(file);
 
   glGenTextures(1, &texture);
