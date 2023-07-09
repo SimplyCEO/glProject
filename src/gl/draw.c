@@ -1,4 +1,3 @@
-#include "types.h"
 #include "object.h"
 #include "texture.h"
 
@@ -11,18 +10,18 @@ void drawWireframe(void)
   bDrawWireframe = !bDrawWireframe;
 }
 
-void createMeshPlane(struct Object3 object)
+void createMeshPlane(struct Object3f object)
 {
   u16 i, ii;
   float *colour = object.colour;
   float alpha = object.alpha;
   GLuint texture = loadTexture(object.texture.name,
-                               object.texture.sizeX,
-                               object.texture.sizeY);
+                               object.texture.size.x,
+                               object.texture.size.y);
 
   glBindTexture(GL_TEXTURE_3D, texture);
 
-  for(i=0; i<MAX_VERTEX3_SIZE; i++)
+  for(i=0; i<MAX_NODE3_SIZE; i++)
   {
     switch(bDrawWireframe)
     {
@@ -42,9 +41,9 @@ void createMeshPlane(struct Object3 object)
 
     for(ii=0; ii<3; ii++)
     {
-      float posX = object.mesh.vertex[i].pos[ii].x;
-      float posY = object.mesh.vertex[i].pos[ii].y;
-      float posZ = object.mesh.vertex[i].pos[ii].z;
+      float posX = object.mesh.node[i].pos[ii].x;
+      float posY = object.mesh.node[i].pos[ii].y;
+      float posZ = object.mesh.node[i].pos[ii].z;
       glTexCoord2f(posX, posZ);
       glVertex4f(posX, posY, posZ, alpha);
     }
@@ -55,11 +54,11 @@ void createMeshPlane(struct Object3 object)
   freeTexture(texture);
 }
 
-void createObject(u8 type, u16 id)
+void createObject(enum ObjectType type, u32 id)
 {
   glPushMatrix();
 
-  struct Object3 object = getObjectData(type, id);
+  struct Object3f object = getObjectData(type, id);
 
   object.vec.rot.deg += 1.0f;
   glTranslatef(object.vec.pos.x, object.vec.pos.y, object.vec.pos.z);

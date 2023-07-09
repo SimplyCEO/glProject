@@ -10,21 +10,21 @@
 
 #ifdef RETRO_END
   #define MAX_OBJECTS 32
-  #define MAX_VERTEX3_SIZE 64
+  #define MAX_NODE3_SIZE 64
 #elif LOW_END
   #define MAX_OBJECTS 128
-  #define MAX_VERTEX3_SIZE 256
+  #define MAX_NODE3_SIZE 256
 #elif MEDIUM_END
   #define MAX_OBJECTS 256
-  #define MAX_VERTEX3_SIZE 512
+  #define MAX_NODE3_SIZE 512
 #elif HIGH_END
   #define MAX_OBJECTS 512
-  #define MAX_VERTEX3_SIZE 4096
+  #define MAX_NODE3_SIZE 4096
 #else
   #define MAX_OBJECTS 1024
-  #define MAX_VERTEX3_SIZE 8192
+  #define MAX_NODE3_SIZE 8192
 #endif
-#define MAX_VERTEX2_SIZE 6
+#define MAX_NODE2_SIZE 6
 
 #endif
 

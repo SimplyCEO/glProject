@@ -7,7 +7,7 @@
 
 struct MouseMap
 {
-  struct Matrix2 pos[3];
+  struct Matrix2f pos[3];
   i32 lmb;
   i32 mmb;
   i32 rmb;
@@ -34,20 +34,20 @@ bool returnMouseKeyState(u8 key)
   return bMouseKeyState[key];
 }
 
-struct Rotation3 getCameraAngle(u8 axis)
+struct Rotation3f getCameraAngle(u8 axis)
 {
-  struct Rotation3 rotation = {0.0f, {0.0f, 0.0f, 0.0f}};
+  struct Rotation3f rotation = {0.0f, {0.0f, 0.0f, 0.0f}};
 
   switch(axis)
   {
-    case 0: rotation = (struct Rotation3){mouseDragX, {0.0f , mouseSensitivityY, 0.0f}}; break;
-    default: rotation = (struct Rotation3){mouseDragY, {mouseSensitivityX, 0.0f, mouseSensitivityX}}; break;
+    case 0: rotation = (struct Rotation3f){mouseDragX, {0.0f , mouseSensitivityY, 0.0f}}; break;
+    default: rotation = (struct Rotation3f){mouseDragY, {mouseSensitivityX, 0.0f, mouseSensitivityX}}; break;
   }
 
   return rotation;
 }
 
-void calculateAngle(struct Matrix2 pos)
+void calculateAngle(struct Matrix2f pos)
 {
   float zeroX = mouseInput.pos[0].x;
   float zeroY = mouseInput.pos[0].y;

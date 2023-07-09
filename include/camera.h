@@ -3,11 +3,12 @@
 
 #include "matrix.h"
 
+/* Same as Vector3f, but with pitch/yaw rotation */
 struct Camera
 {
-  struct Matrix3 pos;
-  struct Rotation3 rot[2];
-  struct Acceleration3 vel;
+  struct Matrix3f pos;
+  struct Rotation3f rot[2];
+  struct Acceleration3f vel;
 };
 
 void configureCamera(void);

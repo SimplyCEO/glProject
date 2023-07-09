@@ -3,7 +3,7 @@
 
 void configureMouseKeys(void);
 bool returnMouseKeyState(u8 key);
-struct Rotation3 getCameraAngle(u8 pos);
+struct Rotation3f getCameraAngle(u8 axis);
 void mouseMovement(i32 x, i32 y);
 void mouseKeyEvent(i32 key, i32 state, i32 x, i32 y);
 

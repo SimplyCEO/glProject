@@ -1,4 +1,3 @@
-#include "types.h"
 #include "camera.h"
 
 #include "gl/main.h"
@@ -53,8 +52,8 @@ void callCameraMovement(struct Camera camera)
 {
   u8 i;
 
-  struct Rotation3 angleX = getCameraAngle(0);
-  struct Rotation3 angleY = getCameraAngle(1);
+  struct Rotation3f angleX = getCameraAngle(0);
+  struct Rotation3f angleY = getCameraAngle(1);
 
   camera.rot[0].face.x = angleX.face.x;
   camera.rot[0].face.y = angleX.face.y;
