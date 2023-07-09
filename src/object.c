@@ -58,6 +58,23 @@ void registerObjects(u8 type)
   stObject[type][0].alpha = 1.0f;
   strcpy(stObject[type][0].texture, "assets/buffer.bmp");
   bObjectRegistration[type][0] = true;
+
+  /* Simple terrain */
+  stObject[type][1].type = 0;
+  stObject[type][1].id = 1;
+  /* Bottom */
+  stObject[type][1].mesh.vertex[0].pos[0] = (struct Matrix3){-15.0f,  0.0f, -15.0f};
+  stObject[type][1].mesh.vertex[0].pos[1] = (struct Matrix3){-15.0f,  0.0f,  15.0f};
+  stObject[type][1].mesh.vertex[0].pos[2] = (struct Matrix3){ 15.0f,  0.0f,  15.0f};
+  stObject[type][1].mesh.vertex[1].pos[0] = (struct Matrix3){-15.0f,  0.0f, -15.0f};
+  stObject[type][1].mesh.vertex[1].pos[1] = (struct Matrix3){ 15.0f,  0.0f,  15.0f};
+  stObject[type][1].mesh.vertex[1].pos[2] = (struct Matrix3){ 15.0f,  0.0f, -15.0f};
+  stObject[type][1].vec.pos = (struct Matrix3){0.0f, 0.0f, 0.0f};
+  stObject[type][1].vec.rot = (struct Rotation3){0.0f, {0.0f, 0.0f, 0.0f}};
+  memcpy(stObject[type][1].colour, (float[3]){1.0f, 1.0f, 1.0f}, sizeof stObject[type][0].colour);
+  stObject[type][1].alpha = 1.0f;
+  strcpy(stObject[type][1].texture, "assets/terrain.bmp");
+  bObjectRegistration[type][1] = true;
 }
 
 int returnObject(u8 type, u8 id)
