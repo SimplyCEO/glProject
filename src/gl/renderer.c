@@ -15,7 +15,7 @@ void display(void)
 {
   enum ObjectType type = 0;
   struct Camera camera = getCameraValue(0);
-  u16 i;
+  i16 i;
 
   glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
   glClear(GL_COLOR_BUFFER_BIT);
@@ -30,7 +30,7 @@ void display(void)
 
   for(type=0; type<4; type++)
   {
-    for(i=0; i<MAX_OBJECTS; i++)
+    for(i=MAX_OBJECTS; i>=0; i--)
     {
       bool bDoObjectExists = returnObject(type, i);
 
