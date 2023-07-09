@@ -43,12 +43,14 @@ void createMeshPlane(struct Object3 object)
       float posX = object.mesh.vertex[i].pos[ii].x;
       float posY = object.mesh.vertex[i].pos[ii].y;
       float posZ = object.mesh.vertex[i].pos[ii].z;
-      glTexCoord3f(posX, posY, posZ);
+      glTexCoord2f(posX, posZ);
       glVertex4f(posX, posY, posZ, alpha);
     }
 
     glEnd();
   }
+
+  freeTexture(texture);
 }
 
 void createObject(u8 type, u16 id)
