@@ -60,12 +60,11 @@ void callCameraMovement(struct Camera camera)
   camera.rot[0].face.y = angleX.face.y;
   camera.rot[0].face.z = angleX.face.z;
   camera.rot[0].deg    = (angleX.deg)*(camera.rot[0].face.y);
-  /*
+
   camera.rot[1].face.x = angleY.face.x;
   camera.rot[1].face.y = angleY.face.y;
   camera.rot[1].face.z = angleY.face.z;
   camera.rot[1].deg    = (angleY.deg)*(camera.rot[1].face.x);
-  */
 
   float posX = camera.pos.x;
   float posY = camera.pos.y;
@@ -102,28 +101,17 @@ void callCameraMovement(struct Camera camera)
 
     switch(quadrant)
     {
-      case 1:
-      {
-        accelFw[0] *= -1;
-        break;
-      }
-      case 2:
-      {
-        accelFw[0] *= -1;
-        accelFw[1] *= -1;
-        break;
-      }
-      case 3:
-      {
-        accelFw[1] *= -1;
-        break;
-      }
+      case 1: accelFw[0] *= -1; break;
+      case 2: accelFw[0] *= -1; accelFw[1] *= -1; break;
+      case 3: accelFw[1] *= -1; break;
       default: break;
     }
+
     glRotatef(camera.rot[i].deg, camera.rot[i].face.x,
                                  camera.rot[i].face.y,
                                  camera.rot[i].face.z);
   }
+
   posX += accelFw[0];
   posZ += accelFw[1];
   glTranslatef(posX, posY, posZ);
