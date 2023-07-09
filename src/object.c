@@ -54,7 +54,7 @@ void registerObjects(u8 type)
   stObject[type][0].mesh.vertex[10].pos[2] = (struct Matrix3){ 0.5f, -0.5f, -0.5f};
   stObject[type][0].vec.pos = (struct Matrix3){0.0f, 0.0f, -1.0f};
   stObject[type][0].vec.rot = (struct Rotation3){0.0f, {0.0f, 1.0f, 0.0f}};
-  memcpy(stObject[type][0].colour, (float[3]){0.3f, 0.3f, 0.6f}, sizeof stObject[type][0].colour);
+  memcpy(stObject[type][0].colour, (float[3]){1.0f, 1.0f, 1.0f}, sizeof stObject[type][0].colour);
   stObject[type][0].alpha = 1.0f;
   strcpy(stObject[type][0].texture, "assets/buffer.bmp");
   bObjectRegistration[type][0] = true;
